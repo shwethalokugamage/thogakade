@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="613.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.orderManagement.PlaceOrderFormController">
+
+    <children>
+        <VBox spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+            </padding>
+
+            <!-- Header -->
+            <HBox spacing="10.0" style="-fx-alignment: CENTER_LEFT;">
+                <Label text="Place Order">
+                    <font>
+                        <Font name="System Bold" size="26.0" />
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS" />
+                <Label text="Net Total:" />
+                <Label fx:id="lblNetTotal" text="0.00">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+            </HBox>
+
+            <Separator />
+
+            <!-- Body: left cart + right controls -->
+            <HBox spacing="16.0" VBox.vgrow="ALWAYS">
+
+                <!-- LEFT: cart table -->
+                <VBox prefWidth="560.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <Label text="Order Items (Cart)">
+                        <font>
+                            <Font name="System Bold" size="14.0" />
+                        </font>
+                    </Label>
+
+                    <TableView fx:id="tblOrderItems" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colItemCode" prefWidth="79.20001220703125" text="Item Code" />
+                            <TableColumn fx:id="colDescription" prefWidth="163.20001220703125" text="Description" />
+                            <TableColumn fx:id="colUnitPrice" prefWidth="105.5999755859375" text="Unit Price" />
+                            <TableColumn fx:id="colQty" prefWidth="79.199951171875" text="Qty" />
+                            <TableColumn fx:id="colTotal" prefWidth="144.0" text="Total" />
+                            <TableColumn fx:id="colAction" prefWidth="70.0" text="Action" />
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- RIGHT: inputs/options in 3 sections -->
+                <VBox prefWidth="310.0" spacing="14.0" style="-fx-background-color: transparent;">
+
+                    <!-- Section 1: customer details -->
+                    <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #e6e6e6;">
+                        <padding>
+                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        </padding>
+
+                        <Label text="Customer Details">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Separator />
+
+                        <VBox spacing="6.0">
+                            <Label text="Customer ID (optional)" />
+                            <TextField fx:id="txtCustomerId" onAction="#txtCustomerIdOnAction" promptText="C-001" />
+                        </VBox>
+
+                        <VBox spacing="6.0">
+                            <Label text="Customer Name" />
+                            <TextField fx:id="txtCustomerName" editable="false" promptText="Customer name" />
+                        </VBox>
+                    </VBox>
+
+                    <!-- Section 2: item selection -->
+                    <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #e6e6e6;">
+                        <padding>
+                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        </padding>
+
+                        <Label text="Item Details">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Separator />
+
+                        <VBox spacing="6.0">
+                            <Label text="Item Code" />
+                            <TextField fx:id="txtItemCode" onAction="#txtItemCodeOnAction" promptText="I-001" />
+                        </VBox>
+
+                        <VBox spacing="6.0">
+                            <Label text="Description" />
+                            <TextField fx:id="txtDescription" editable="false" promptText="Item description" />
+                        </VBox>
+
+                        <HBox spacing="10.0">
+                            <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                                <Label text="Unit Price" />
+                                <TextField fx:id="txtUnitPrice" editable="false" promptText="0.00" />
+                            </VBox>
+                            <VBox prefWidth="90.0" spacing="6.0">
+                                <Label text="Qty" />
+                                <TextField fx:id="txtQty" promptText="1" />
+                            </VBox>
+                        </HBox>
+
+                        <VBox spacing="6.0" />
+
+                        <Button fx:id="btnAddToCart" maxWidth="1.7976931348623157E308" onAction="#btnAddToCartOnAction" text="Add To Cart" />
+                    </VBox>
+
+                    <!-- Section 3: order totals + place order -->
+                    <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #e6e6e6;">
+                        <padding>
+                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        </padding>
+
+                        <Label text="Order Summary">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Separator />
+
+                        <VBox spacing="6.0">
+                            <Label text="Order Discount" />
+                            <TextField fx:id="txtOrderDiscount" onAction="#txtOrderDiscountOnAction" promptText="0" />
+                        </VBox>
+
+                        <HBox spacing="10.0" style="-fx-alignment: CENTER_RIGHT;">
+                            <Label text="Net Total:" />
+                            <Label fx:id="lblNetTotalSide" text="0.00">
+                                <font>
+                                    <Font name="System Bold" size="16.0" />
+                                </font>
+                            </Label>
+                        </HBox>
+
+                        <Button fx:id="btnPlaceOrder" maxWidth="1.7976931348623157E308" onAction="#btnPlaceOrderOnAction" text="Place Order" />
+                    </VBox>
+
+                </VBox>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>
