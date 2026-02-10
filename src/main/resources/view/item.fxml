@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="613.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.itemController.ItemFormController">
+   <children>
+      <VBox spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+         </padding>
+
+         <!-- Header -->
+         <HBox spacing="10.0" style="-fx-alignment: CENTER_LEFT;">
+            <Label text="Item Management">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+         </HBox>
+
+         <Separator />
+
+         <!-- Body -->
+         <HBox spacing="16.0" VBox.vgrow="ALWAYS">
+
+            <!-- LEFT: table -->
+            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+               <Label text="Items">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+
+               <TableView fx:id="tblItemView" VBox.vgrow="ALWAYS">
+                  <columns>
+                     <TableColumn fx:id="colItemCode" prefWidth="120.0" text="Item Code" />
+                     <TableColumn fx:id="colDescription" prefWidth="220.0" text="Description" />
+                     <TableColumn fx:id="colPackSize" prefWidth="120.0" text="Pack Size" />
+                     <TableColumn fx:id="colUnitPrice" prefWidth="120.0" text="Unit Price" />
+                     <TableColumn fx:id="colQtyOnHand" prefWidth="120.0" text="Qty On Hand" />
+                  </columns>
+               </TableView>
+            </VBox>
+
+            <!-- RIGHT: form card -->
+            <VBox prefWidth="320.0" spacing="14.0">
+               <VBox spacing="10.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #e6e6e6;">
+                  <padding>
+                     <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                  </padding>
+
+                  <Label text="Item Details">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Separator />
+
+                  <VBox spacing="6.0">
+                     <Label text="Item Code" />
+                     <TextField fx:id="txtItemCode" promptText="I-001" />
+                  </VBox>
+
+                  <VBox spacing="6.0">
+                     <Label text="Description" />
+                     <TextField fx:id="txtDescription" promptText="Description" />
+                  </VBox>
+
+                  <VBox spacing="6.0">
+                     <Label text="Pack Size" />
+                     <TextField fx:id="txtPackSize" promptText="PackSize" />
+                  </VBox>
+
+                  <HBox spacing="10.0">
+                     <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                        <Label text="Unit Price" />
+                        <TextField fx:id="txtUnitPrice" promptText="0.00" />
+                     </VBox>
+                     <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                        <Label text="Qty On Hand" />
+                        <TextField fx:id="txtQtyOnHand" promptText="0" />
+                     </VBox>
+                  </HBox>
+
+                  <HBox spacing="10.0">
+                     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddOnAction" text="ADD" HBox.hgrow="ALWAYS" />
+                     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="UPDATE" HBox.hgrow="ALWAYS" />
+                  </HBox>
+                  <HBox spacing="10.0">
+                     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDeleteOnAction" text="DELETE" HBox.hgrow="ALWAYS" />
+                     <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnClearOnAction" text="CLEAR" HBox.hgrow="ALWAYS" />
+                  </HBox>
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSearchOnAction" text="Search" />
+               </VBox>
+            </VBox>
+         </HBox>
+      </VBox>
+   </children>
+</AnchorPane>
