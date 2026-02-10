@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="613.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.orderdetails.OrderDetailsFormController">
+
+    <children>
+        <VBox spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+            </padding>
+
+            <HBox spacing="10.0" style="-fx-alignment: CENTER_LEFT;">
+                <Label text="Order Details">
+                    <font>
+                        <Font name="System Bold" size="26.0" />
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS" />
+                <Label text="Order ID" />
+                <TextField fx:id="txtOrderId" promptText="O-001" prefWidth="220.0" />
+            </HBox>
+
+            <Separator />
+
+            <VBox spacing="10.0" VBox.vgrow="ALWAYS">
+                <Label text="Line Items">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+
+                <TableView fx:id="tblOrderDetails" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colDetailItemCode" prefWidth="140.0" text="Item Code" />
+                        <TableColumn fx:id="colDetailDescription" prefWidth="260.0" text="Description" />
+                        <TableColumn fx:id="colDetailQty" prefWidth="110.0" text="Qty" />
+                        <TableColumn fx:id="colDetailUnitPrice" prefWidth="140.0" text="Unit Price" />
+                        <TableColumn fx:id="colDetailLineTotal" prefWidth="140.0" text="Line Total" />
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox>
+    </children>
+</AnchorPane>
